@@ -28,10 +28,8 @@ class MuestrasController extends Controller
             'destino',
             'transporte',
             'ensayosMuestras.ensayo'
-
         );
 
-       	
         foreach ($request->all() as $key => $value) {                
             switch ($key) {
                 case 'fechaDescargaDesde':

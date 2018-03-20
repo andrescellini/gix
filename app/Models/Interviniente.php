@@ -10,6 +10,6 @@ class Interviniente extends Model
     protected $primaryKey = 'id_interviniente';
 
     protected $casts = [
-        'cuit' => 'integer'
+        'cuit' => 'double'
     ];
 }

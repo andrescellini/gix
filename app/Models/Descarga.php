@@ -19,9 +19,9 @@ class Descarga extends Model
     ];   
     
     protected $casts = [
-        'carta_porte' => 'integer',
-        'numero_cee' => 'integer',
-        'numero_ctg' => 'integer',
+        'carta_porte' => 'double',
+        'numero_cee' => 'double',
+        'numero_ctg' => 'double',
         'kilos_tara_origen' => 'integer',
         'kilos_neto_origen' => 'integer',
         'kilos_tara_destino' => 'integer',

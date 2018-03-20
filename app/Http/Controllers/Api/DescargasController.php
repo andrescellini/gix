@@ -12,7 +12,136 @@ class DescargasController extends Controller
 {
 
 
-  
+      /**
+     * @SWG\Get(
+     *     path="/descargas",
+     *     summary="Devuelve listado de descargas",
+     *     tags={"descargas"},
+     *     description="Devuelve un json con los descargas que el usuario logeado puede visualizar. ",
+     *     operationId="descargas",
+     *     produces={"application/json"},
+     *     security={
+     *       {"passport": {}},
+     *     },    
+     *     @SWG\Parameter(
+     *         name="fechaCargaDesde",
+     *         in="query",
+     *         description="***UNIVOCO*** formato *AAAAMMDD*",
+     *         format="AAAAMMDD",
+     *         required=false,
+     *         type="string",
+     *     ),        
+     *     @SWG\Parameter(
+     *         name="fechaCargaHasta",
+     *         in="query",
+     *         description="***UNIVOCO*** formato *AAAAMMDD*",
+     *         format="AAAAMMDD",
+     *         required=false,
+     *         type="string",
+     *     ),             
+     *     @SWG\Parameter(
+     *         name="cartaPorte",
+     *         in="query",
+     *         description="***UNIVOCO***",
+     *         required=false,
+     *         type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *         name="numeroCTG",
+     *         in="query",
+     *         description="***UNIVOCO***",
+     *         required=false,
+     *         type="string",
+     *     ),
+     *     @SWG\Parameter(
+     *         name="numeroContratoComprador",
+     *         in="query",
+     *         description="***UNIVOCO***",
+     *         required=false,
+     *         type="string",
+     *     ),
+     *     @SWG\Parameter(
+     *         name="numeroContratoVendedor",
+     *         in="query",
+     *         description="***UNIVOCO***",
+     *         required=false,
+     *         type="string",
+     *     ),
+     *     @SWG\Parameter(
+     *         name="numeroContratoCorredor",
+     *         in="query",
+     *         description="***UNIVOCO***",
+     *         required=false,
+     *         type="string",
+     *     ),     
+     *     @SWG\Parameter(
+     *         name="alfanumericoCupo",
+     *         in="query",
+     *         description="***UNIVOCO***",
+     *         required=false,
+     *         type="string",
+     *     ), 
+     *     @SWG\Parameter(
+     *         name="corredorComprador.cuit",
+     *         in="query",
+     *         description="",
+     *         required=false,
+     *         type="number",
+     *     ),      
+     *     @SWG\Parameter(
+     *         name="corredorVendedor.cuit",
+     *         in="query",
+     *         description="",
+     *         required=false,
+     *         type="number",
+     *     ),                         
+     *     @SWG\Parameter(
+     *         name="vendedor.cuit",
+     *         in="query",
+     *         description="",
+     *         required=false,
+     *         type="number",
+     *     ),      
+     *     @SWG\Parameter(
+     *         name="comprador.cuit",
+     *         in="query",
+     *         description="",
+     *         required=false,
+     *         type="number",
+     *     ),
+     *     @SWG\Parameter(
+     *         name="producto.codigo",
+     *         in="query",
+     *         description="",
+     *         required=false,
+     *         type="number",
+     *     ),
+        *     @SWG\Parameter(
+     *         name="destino.codigoPlantaOncca",
+     *         in="query",
+     *         description="",
+     *         required=false,
+     *         type="number",
+     *     ),         
+     *     @SWG\Response(
+     *         response=200,
+     *         description="éxito",     
+     *     ),
+     *     @SWG\Response(
+     *         response=401,
+     *         description="sin autorizacion",     
+     *     ),
+     *     @SWG\Response(
+     *         response="422",
+     *         description="parametros de entrada inválidos",
+     *     ),
+     *     @SWG\Response(
+     *         response="500",
+     *         description="error inesperado por parte del api",
+     *     )
+     * )
+     */
+
     public function index(DescargasRequest $request)
     {
        	
@@ -44,8 +173,6 @@ class DescargasController extends Controller
            'servicios.metodoDescuento',
            'biotecnologias',
            'ensayosDescargas'
-           //'calidad?'
-
         );
 
 
@@ -113,7 +240,7 @@ class DescargasController extends Controller
             }        
         }
         
-
+        
         return new Descargas( $query->paginate($this->pageSize));
 
     }

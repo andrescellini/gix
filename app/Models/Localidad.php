@@ -12,8 +12,8 @@ class Localidad extends Model
     protected $casts = [
         'codigo_sio' => 'integer',
         'codigo_oncca' => 'integer',
-        'codigo_postal' => 'integer',
-        'subcodigo_postal' => 'integer',
+        'codigo_postal' => 'string',
+        'subcodigo_postal' => 'string',
         'id_provincia' => 'integer',
     ];    
 

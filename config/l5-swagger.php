@@ -8,7 +8,7 @@ return [
         |--------------------------------------------------------------------------
         */
 
-        'title' => 'L5 Swagger UI',
+        'title' => 'Documentacion Api Gix',
     ],
 
     'routes' => [
@@ -18,7 +18,7 @@ return [
         |--------------------------------------------------------------------------
         */
 
-        'api' => 'api/documentation',
+        'api' => 'api/docs',
 
         /*
         |--------------------------------------------------------------------------
@@ -130,21 +130,14 @@ return [
         ],
         */
 
-        
         'passport' => [ // Unique name of security
             'type' => 'oauth2', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
-            'description' => 'Laravel passport oauth2 security.',
-            'in' => 'header',
-            'scheme' => 'https',
-            'flows' => [
-                "password" => [
-                    "authorizationUrl" => config('app.url') . '/oauth/authorize',
-                    "tokenUrl" => config('app.url') . '/oauth/token',
-                    "refreshUrl" => config('app.url') . '/token/refresh',
-                    "scopes" => []
-                ],
-            ],
+            'description' => 'En username indicar email. No es necesario agregar client_id y client_secret',
+            'flow' => 'password', // The flow used by the OAuth2 security scheme. Valid values are "implicit", "password", "application" or "accessCode".
+            'tokenUrl' => env('SWAGGER_SCHEMA') . '://' . env('API_URL') . '/login', // The authorization URL to be used for (password/application/accessCode)
+            'scopes' => []
         ],
+
         
     ],
 

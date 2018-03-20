@@ -12,6 +12,101 @@ class ContratosController extends Controller
 {
 
 
+    /**
+     * @SWG\Get(
+     *     path="/contratos",
+     *     summary="Devuelve listado de contratos",
+     *     tags={"contratos"},
+     *     description="Devuelve un json con los contratos que el usuario logeado puede visualizar. ",
+     *     operationId="contratos",
+     *     produces={"application/json"},
+     *   security={
+     *     {"passport": {}},
+     *   },     
+     *     @SWG\Parameter(
+     *         name="numeroContratoComprador",
+     *         in="query",
+     *         description="***UNIVOCO*** - Nº contrato generado por parte del Comprador",
+     *         required=false,
+     *         type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *         name="numeroContratoVendedor",
+     *         in="query",
+     *         description="***UNIVOCO*** - Nº contrato generado por parte del Vendedor",
+     *         required=false,
+     *         type="string",
+     *     ),
+     *     @SWG\Parameter(
+     *         name="numeroContratoCorredor",
+     *         in="query",
+     *         description="***UNIVOCO*** - Nº contrato generado por parte del Corredor",
+     *         required=false,
+     *         type="string",
+     *     ),
+     *     @SWG\Parameter(
+     *         name="fechaContratoDesde",
+     *         in="query",
+     *         description="***UNIVOCO*** - FechaDesde de contrato, formato *AAAAMMDD*",
+     *         format="AAAAMMDD",
+     *         required=false,
+     *         type="string",
+     *     ),          
+     *     @SWG\Parameter(
+     *         name="fechaContratoHasta",
+     *         in="query",
+     *         description="***UNIVOCO*** - FechaHasta de contrato, formato *AAAAMMDD*",
+     *         format="AAAAMMDD",
+     *         required=false,
+     *         type="string",
+     *     ), 
+     *     @SWG\Parameter(
+     *         name="comprador.cuit",
+     *         in="query",
+     *         description="cuit del comprador",
+     *         required=false,
+     *         type="number",
+     *     ),
+     *     @SWG\Parameter(
+     *         name="vendedor.cuit",
+     *         in="query",
+     *         description="cuit del vendedor",
+     *         required=false,
+     *         type="number",
+     *     ),     
+     *     @SWG\Parameter(
+     *         name="corredor.cuit",
+     *         in="query",
+     *         description="cuit del corredor",
+     *         required=false,
+     *         type="number",
+     *     ),
+     *     @SWG\Parameter(
+     *         name="producto.codigo",
+     *         in="query",
+     *         description="codigo del producto segun afip",
+     *         required=false,
+     *         type="number",
+     *     ),          
+     *     @SWG\Response(
+     *         response=200,
+     *         description="éxito",     
+     *     ),
+     *     @SWG\Response(
+     *         response=401,
+     *         description="sin autorizacion",     
+     *     ),
+     *     @SWG\Response(
+     *         response="422",
+     *         description="parametros de entrada inválidos",
+     *     ),
+     *     @SWG\Response(
+     *         response="500",
+     *         description="error inesperado por parte del api",
+     *     )
+     * )
+     */
+
     public function index(ContratosRequest $request)
     {
        	
@@ -20,7 +115,8 @@ class ContratosController extends Controller
    								'corredor',
    								'procedencia',
    								'destino',
-   								'producto',
+                                'producto',
+   								'unidadMedida',
    								'actividadComprador',
    								'actividadVendedor');
 

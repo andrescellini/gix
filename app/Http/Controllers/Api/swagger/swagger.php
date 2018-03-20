@@ -8,11 +8,10 @@
  *     basePath="/",
  *     @SWG\Info(
  *         version="1.0.0",
- *         title="Vagon",
+ *         title="Api Gix",
  *         description="Documentacion del api",
  *         termsOfService="",
  *     ),
  * )
  */
 
- 

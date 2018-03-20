@@ -40,7 +40,7 @@ class Descargas extends ResourceCollection
                   "cartaPorte"=> $d->carta_porte,
                   "numeroCEE"=> $d->numero_CEE,
                   "fechaCarga"=> $d->fecha_carga->toIso8601String(),
-                  "fechaVencimiento"=> $d->fecha_vencimiento->format('Ymd'),
+                  "fechaVencimiento"=> $d->fecha_vencimiento->toIso8601String(),
                   "numeroCTG"=> $d->numero_ctg,
                   "titular"=> [ 
                      "cuit"=> $d->titular->cuit,
@@ -195,7 +195,7 @@ class Descargas extends ResourceCollection
                       "alfanumericoCupo" => $d->alfanumerico_cupo,
                       "kmARecorrer" => $d->km_a_recorrer,
                       "statusCamionEnPuerto" => $d->id_estado_descarga,
-                      "fechaDescarga" => $d->fecha_descarga->format('Ymd'),
+                      "fechaDescarga" => $d->fecha_descarga->toIso8601String(),
                       "kilosBrutosDestino" => $d->kilos_brutos_destino,
                       "kilosTaraDestino" => $d->kilos_tara_destino,
                       "kilosNetoDestino" => $d->kilos_neto_destino,
@@ -206,7 +206,7 @@ class Descargas extends ResourceCollection
                       "kilosMermaZaranda" => $d->kilos_merma_zaranda,
                       "kilosFinalesDescarga" => $d->kilos_finales_descarga,
                       "kilosConfirmadosDefinitivosCTG" => $d->kilos_confirmados_definitivos_ctg,
-                      "fechaConfirmacionCTG" => $d->fecha_confirmacion_ctg->format('Ymd'),
+                      "fechaConfirmacionCTG" => $d->fecha_confirmacion_ctg->toIso8601String(),
                       "conformidad" => $d->id_conformidad,
                       "codigoBolsaAnalisisCalidad" => $d->id_bolsa,
                       "grado" => $d->grado,
@@ -214,12 +214,6 @@ class Descargas extends ResourceCollection
                       "calidad" => new EnsayosDescargas($d->ensayosDescargas),
                       "servicios" => new Servicios($d->servicios),
                       "biotecnologia" => new Biotecnologias($d->biotecnologias),
-
-
-
-
-
-
 
                   "datosAuxiliares" => $d->datosAuxiliares,
 

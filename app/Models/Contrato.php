@@ -11,27 +11,27 @@ class Contrato extends Model
 
     protected $appends = ['datosAuxiliares'];
 
-    /*getters setters*/
+    protected $dates = [
+        'fecha_contrato',
+        'fecha_fijacion_desde',
+        'fecha_fijacion_hasta',
+        'fecha_entrega_desde',
+        'fecha_entrega_hasta',        
+        'fecha_convenida_pago',
+    ];   
     
-    public function getDatosAuxiliaresAttribute(){
-    	return [];
-    }
-    
-    public function getFechaContratoAttribute($value){
-    	return str_replace('-', '', $value);
-    }
-
-    public function getFechaFijacionDesdeAttribute($value){
-    	return str_replace('-', '', $value);
-    }
-
-    public function getFechaFijacionHastaAttribute($value){
-    	return str_replace('-', '', $value);
-    }
-
-    public function getFechaConvenioPagoAttribute($value){
-    	return str_replace('-', '', $value);
-    }    
+    protected $casts = [
+        'id_bolsa' => 'integer',
+        'cantidad_desde' => 'integer',
+        'cantidad_hasta' => 'integer',
+        'cantidad_camiones' => 'integer',
+        'porcentaje_mercaderia_parcial' => 'float',
+        'precio' => 'float',
+        'cantidad_fijacion_minima' => 'integer',
+        'cantidad_fijacion_maxima' => 'integer',
+        'codigo_registracion_AFIP' => 'integer',
+    ];
+   
 
     /*relaciones*/
 
@@ -74,7 +74,10 @@ class Contrato extends Model
     {
         return $this->hasOne('App\Models\Actividad','id_actividad','id_actividad_vendedor');
     }
-
+    public function unidadMedida()
+    {
+        return $this->hasOne('App\Models\UnidadMedida','id_unidad_medida','id_unidad_medida');
+    }
     
     /*filtros*/
     
