@@ -14,7 +14,9 @@ Implementación del api usando el protocolo GIX. Desarrollada con Laravel con el
 3. ejecutar "php artisan key:generate" para generar la llave de encriptacion del proyecto
 4. Duplicar el .env.example y renombrarlo .env, setear ahi datos de db, smtp, etc etc.
 5. php artisan passport:install para generar las credenciales oAuth para generar api keys etc...
-6. php artisan migrate para crear tablas en la base de datos
+6. php artisan migrate para crear tablas de usuarios, autenticacion 0auth etc. Para el resto de las tablas del negocio dejo el script "gix.sql" en el raiz.
+
+Para registrar un usuario se puede hacer desde {BASE_URL}/register
 
 [Documentación del laravel](https://laravel.com/docs/routing).
 
